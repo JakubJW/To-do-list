@@ -1,7 +1,11 @@
 const newTask = document.getElementById("addTask");
-const saveBtn = document.getElementById("save");
 const taskInput = document.getElementById("taskInput");
-document.addEventListener("DOMContentLoaded", loadFromLocal)
+const taskList = document.getElementById("tasks");
+const filter = document.getElementById("filter");
+
+filter.addEventListener("click", filterTasks);
+document.addEventListener("DOMContentLoaded", loadFromLocal);
+newTask.addEventListener("click", addNewTask);
 
 function addNewTask(event) {
     event.preventDefault();
@@ -32,8 +36,6 @@ function addNewTask(event) {
     deleteBtn.addEventListener("click", deleteTask);
     };
 
-newTask.addEventListener("click", addNewTask);
-
 function deleteTask(e) {
     const item = e.target.parentElement;
     item.classList.add("animation");
@@ -48,9 +50,30 @@ function completeTask(e) {
     e.target.parentElement.classList.toggle("completed");
 }
 
-saveBtn.addEventListener("click", function() {
-    
-});
+function filterTasks(e) {
+    const tasks = taskList.childNodes;
+    tasks.forEach(function(task){
+        switch(e.target.value){
+            case "all":
+                task.style.display = "flex";
+                break;
+            case "completed":
+                if(task.classList.contains("completed")) {
+                    task.style.display = "flex";
+                } else {
+                    task.style.display = "none";
+                }
+                break;
+            case "uncompleted":
+                if(!task.classList.contains("completed")) {
+                    task.style.display = "flex";
+                } else {
+                    task.style.display = "none";
+                }
+                break;
+        }
+    });
+}
 
 function saveToLocal(task) {
     let tasks;
