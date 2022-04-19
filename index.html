@@ -9,7 +9,12 @@
 <body>
     <div class="content" id="content">
         <div class="btnRow">
-            <button type="button" class="saveBtn" id="save">Save</button>
+            <h1 class="title">What's on your mind?</h1>
+                <select name="filters" class="tasksFilter" id="filter">
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="uncompleted">Uncompleted</option>
+                </select>
             <form>
                 <div class="task" id="">
                     <input type="text" class="taskInput" id="taskInput" placeholder="type here..." value="">
@@ -19,9 +24,7 @@
                 </div>
             </form>
         </div>
-        
-        <div class="tasks" id="tasks"> 
-        </div>
+        <div class="tasks" id="tasks"></div>
     </div>
     <script src="script.js"></script>
 </body>
