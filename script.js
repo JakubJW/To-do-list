@@ -34,11 +34,11 @@ function addNewTask(event) {
     completeBtn.addEventListener("click", completeTask);
 
     deleteBtn.addEventListener("click", deleteTask);
-    };
+};
 
 function deleteTask(e) {
     const item = e.target.parentElement;
-    item.classList.add("animation");
+    item.classList.add("deleteAnimation");
     removeFromLocal(item);
     item.addEventListener('transitionend', function(){
         item.remove();
@@ -54,6 +54,9 @@ function filterTasks(e) {
     const tasks = taskList.childNodes;
     tasks.forEach(function(task){
         switch(e.target.value){
+            default :
+                task.style.display = "flex";
+                break;
             case "all":
                 task.style.display = "flex";
                 break;
